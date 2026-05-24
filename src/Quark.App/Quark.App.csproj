@@ -10,7 +10,7 @@
     <RootNamespace>Quark.App</RootNamespace>
     <Product>Quark</Product>
     <Title>Quark</Title>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Elanoran</Authors>
     <Company>Quark contributors</Company>
     <ApplicationIcon>..\..\assets\quark.ico</ApplicationIcon>
