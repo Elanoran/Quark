@@ -216,7 +216,7 @@ public sealed class TrayApplicationContext : ApplicationContext
         Icon? previous = _currentIcon;
         _currentIcon = next;
         _notifyIcon.Icon = next;
-        _notifyIcon.Text = tooltip.Length > 63 ? tooltip[..63] : tooltip;
+        _notifyIcon.Text = "Quark";
         previous?.Dispose();
     }
 }
