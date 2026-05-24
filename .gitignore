@@ -1,0 +1,8 @@
+bin/
+obj/
+.dotnet_home/
+.nuget_packages/
+.vs/
+dist/
+.ssh/
+*.user

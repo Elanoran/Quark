@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{06A7DBBA-E3E7-4ADF-8F80-BC4126297788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quark.App", "src\Quark.App\Quark.App.csproj", "{34534E38-8187-4783-8C7A-F1C6157ECDED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34534E38-8187-4783-8C7A-F1C6157ECDED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34534E38-8187-4783-8C7A-F1C6157ECDED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34534E38-8187-4783-8C7A-F1C6157ECDED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34534E38-8187-4783-8C7A-F1C6157ECDED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{34534E38-8187-4783-8C7A-F1C6157ECDED} = {06A7DBBA-E3E7-4ADF-8F80-BC4126297788}
+	EndGlobalSection
+EndGlobal

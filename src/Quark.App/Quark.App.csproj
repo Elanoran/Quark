@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Quark</AssemblyName>
+    <RootNamespace>Quark.App</RootNamespace>
+    <Product>Quark</Product>
+    <Title>Quark</Title>
+    <Version>0.1.0</Version>
+    <Authors>Elanoran</Authors>
+    <Company>Quark contributors</Company>
+    <ApplicationIcon>..\..\assets\quark.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\assets\quark.ico">
+      <Link>assets\quark.ico</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
