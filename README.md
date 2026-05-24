@@ -8,6 +8,14 @@ Quark is a Windows tray unread counter for Proton Mail Bridge. It talks only to 
 
 ![Quark settings window](assets/screenshot-settings.png)
 
+Tray icon without unread mail:
+
+![Quark tray icon with no unread mail](assets/tray-nomail.jpg)
+
+Tray icon with unread mail:
+
+![Quark tray icon with unread mail](assets/tray-mail.jpg)
+
 ## Features
 
 - Unread count badge in the Windows system tray.
