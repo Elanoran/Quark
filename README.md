@@ -74,7 +74,7 @@ Quark is an unofficial utility for Proton Mail Bridge. It is provided as-is, wit
 
 ## Support
 
-If Quark is useful to you, you can support the project through [GitHub Sponsors](https://github.com/sponsors/Elanoran) or [Buy Me a Coffee](https://buymeacoffee.com/elanoran).
+If Quark is useful to you, you can support the project through [Buy Me a Coffee](https://buymeacoffee.com/elanoran).
 
 ## License
 
