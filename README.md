@@ -72,6 +72,10 @@ Requires Inno Setup 7. Installer output is written to `dist\`.
 
 Quark is an unofficial utility for Proton Mail Bridge. It is provided as-is, without warranty or liability, under the MIT License. Use it at your own risk.
 
+## Support
+
+If Quark is useful to you, you can support the project through [GitHub Sponsors](https://github.com/sponsors/Elanoran) or [Buy Me a Coffee](https://buymeacoffee.com/elanoran).
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
