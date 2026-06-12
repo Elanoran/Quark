@@ -1,6 +1,6 @@
 # Security Policy
 
-Quark stores the Proton Mail Bridge IMAP password encrypted with Windows DPAPI for the current Windows user.
+Quark stores the Proton Mail Bridge IMAP username and password encrypted with Windows DPAPI for the current Windows user.
 
 Please do not report secrets, credentials, or private mailbox details in public issues. For security-sensitive reports, use a private GitHub security advisory when the repository is published.
 

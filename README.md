@@ -22,7 +22,7 @@ Tray icon with unread mail:
 - Opens the installed Proton Mail app from the tray when available.
 - Optional start with Windows.
 - Local Bridge-only IMAP access: `127.0.0.1`, `localhost`, `::1`.
-- Bridge password encrypted with Windows DPAPI for the current user.
+- Bridge username and password encrypted with Windows DPAPI for the current user.
 
 ## Requirements
 
@@ -73,7 +73,7 @@ Requires Inno Setup 7. Installer output is written to `dist\`.
 - Quark only requests `STATUS INBOX (UNSEEN)`.
 - Quark rejects non-loopback IMAP hosts.
 - Settings are stored at `%APPDATA%\Quark\settings.json`.
-- The Bridge password is saved as `ProtectedPassword` using Windows DPAPI.
+- The Bridge username and password are saved as `ProtectedUserName` and `ProtectedPassword` using Windows DPAPI.
 - Quark is not affiliated with Proton AG.
 
 ## Disclaimer

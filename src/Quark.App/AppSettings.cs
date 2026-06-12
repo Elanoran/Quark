@@ -71,6 +71,7 @@ public sealed class AppSettings
         public bool UseSsl { get; set; }
         public bool UseStartTls { get; set; } = true;
         public string UserName { get; set; } = string.Empty;
+        public string ProtectedUserName { get; set; } = string.Empty;
         public string ProtectedPassword { get; set; } = string.Empty;
         public string Mailbox { get; set; } = "INBOX";
         public int PollSeconds { get; set; } = 60;
@@ -87,7 +88,7 @@ public sealed class AppSettings
                 Port = settings.Port,
                 UseSsl = settings.UseSsl,
                 UseStartTls = settings.UseStartTls,
-                UserName = settings.UserName,
+                ProtectedUserName = Protect(settings.UserName),
                 ProtectedPassword = Protect(settings.Password),
                 Mailbox = settings.Mailbox,
                 PollSeconds = settings.PollSeconds,
@@ -106,7 +107,7 @@ public sealed class AppSettings
                 Port = Port,
                 UseSsl = UseSsl,
                 UseStartTls = UseStartTls,
-                UserName = UserName,
+                UserName = !string.IsNullOrWhiteSpace(ProtectedUserName) ? Unprotect(ProtectedUserName) : UserName,
                 Password = !string.IsNullOrWhiteSpace(ProtectedPassword) ? Unprotect(ProtectedPassword) : string.Empty,
                 Mailbox = Mailbox,
                 PollSeconds = PollSeconds,

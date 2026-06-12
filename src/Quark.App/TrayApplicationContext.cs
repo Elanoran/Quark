@@ -8,6 +8,7 @@ public sealed class TrayApplicationContext : ApplicationContext
     private readonly System.Windows.Forms.Timer _timer;
     private readonly System.Windows.Forms.Timer _singleClickTimer;
     private readonly ImapUnreadClient _client = new();
+    private readonly UpdateChecker _updateChecker = new();
     private AppSettings _settings;
     private SettingsForm? _settingsForm;
     private Icon? _currentIcon;
@@ -22,6 +23,8 @@ public sealed class TrayApplicationContext : ApplicationContext
         menu.Items.Add("Open Proton Mail", null, (_, _) => OpenProtonMail());
         menu.Items.Add("Refresh now", null, async (_, _) => await RefreshAsync());
         menu.Items.Add("Settings", null, (_, _) => ShowSettings());
+        menu.Items.Add("Check for updates", null, async (_, _) => await CheckForUpdatesAsync());
+        menu.Items.Add("Project on GitHub", null, (_, _) => OpenProjectPage());
         menu.Items.Add(new ToolStripSeparator());
         menu.Items.Add("Exit", null, (_, _) => ExitThread());
 
@@ -97,7 +100,7 @@ public sealed class TrayApplicationContext : ApplicationContext
             return;
         }
 
-        _settingsForm = new SettingsForm(_settings);
+        _settingsForm = new SettingsForm(_settings, _lastUnreadCount);
         _settingsForm.FormClosed += (_, _) =>
         {
             if (_settingsForm?.DialogResult == DialogResult.OK)
@@ -140,6 +143,50 @@ public sealed class TrayApplicationContext : ApplicationContext
         catch (Exception ex)
         {
             SetIcon(_lastUnreadCount, true, ex.Message);
+        }
+    }
+
+    private void OpenProjectPage()
+    {
+        try
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/Elanoran/Quark") { UseShellExecute = true });
+        }
+        catch (Exception ex)
+        {
+            SetIcon(_lastUnreadCount, true, ex.Message);
+        }
+    }
+
+    private async Task CheckForUpdatesAsync()
+    {
+        try
+        {
+            using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(6));
+            UpdateCheckResult result = await _updateChecker.CheckLatestAsync(timeout.Token);
+            if (!result.IsNewer)
+            {
+                string message = result.CurrentVersion > result.LatestVersion
+                    ? $"Local build v{result.CurrentVersion.ToString(3)} is newer than the latest GitHub release ({result.LatestTag})."
+                    : $"You are using the latest version: v{result.CurrentVersion.ToString(3)}";
+                _notifyIcon.ShowBalloonTip(4000, "Quark", message, ToolTipIcon.None);
+                return;
+            }
+
+            DialogResult openRelease = MessageBox.Show(
+                $"Quark {result.LatestTag} is available. Open the release page?",
+                "Quark update available",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information);
+
+            if (openRelease == DialogResult.Yes)
+            {
+                Process.Start(new ProcessStartInfo(result.ReleaseUrl) { UseShellExecute = true });
+            }
+        }
+        catch (Exception ex)
+        {
+            _notifyIcon.ShowBalloonTip(4000, "Quark", $"Could not check for updates: {ex.Message}", ToolTipIcon.None);
         }
     }
 
@@ -194,6 +241,7 @@ public sealed class TrayApplicationContext : ApplicationContext
             bool increased = _lastUnreadCount.HasValue && count > _lastUnreadCount.Value;
             _lastUnreadCount = count;
             SetIcon(count, false, count == 1 ? "1 unread message" : $"{count} unread messages");
+            _settingsForm?.SetUnreadCount(count);
 
             if (increased && _settings.ShowBalloonOnIncrease)
             {

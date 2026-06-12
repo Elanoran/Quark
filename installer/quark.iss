@@ -1,5 +1,5 @@
 #define MyAppName "Quark"
-#define MyAppVersion "0.1.1"
+#define MyAppVersion "0.1.2"
 #define MyAppPublisher "Quark contributors"
 #define MyAppExeName "Quark.exe"
 #define MySourceDir "..\src\Quark.App\bin\Release\net8.0-windows\win-x64\publish"
@@ -25,6 +25,7 @@ SetupIconFile=..\assets\quark.ico
 UninstallDisplayIcon={app}\{#MyAppExeName}
 CloseApplications=yes
 CloseApplicationsFilter={#MyAppExeName}
+RestartApplications=no
 PrivilegesRequired=lowest
 
 [Languages]
@@ -32,7 +33,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional shortcuts:"; Flags: unchecked
-Name: "launch"; Description: "Launch Quark after installation"; GroupDescription: "After installation:"; Flags: checkedonce
+Name: "launch"; Description: "Launch Quark after installation"; GroupDescription: "After installation:"; Flags: unchecked
 
 [Files]
 Source: "{#MySourceDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs

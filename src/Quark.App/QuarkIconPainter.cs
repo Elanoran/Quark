@@ -7,7 +7,7 @@ public static class QuarkIconPainter
     public static void Paint(Graphics g, Rectangle bounds, bool hasError)
     {
         g.SmoothingMode = SmoothingMode.AntiAlias;
-        g.Clear(Color.Transparent);
+        GraphicsState state = g.Save();
 
         float scale = Math.Min(bounds.Width, bounds.Height) / 128f;
         g.TranslateTransform(bounds.X, bounds.Y);
@@ -45,7 +45,7 @@ public static class QuarkIconPainter
         DrawParticle(g, 35, 82, 3.3f, Color.FromArgb(205, 138, 100, 255));
         DrawParticle(g, 64, 22, 2.8f, Color.FromArgb(190, 170, 136, 255));
 
-        g.ResetTransform();
+        g.Restore(state);
     }
 
     private static void DrawOrbit(Graphics g, Color color, float width, float angle, float rx, float ry)
