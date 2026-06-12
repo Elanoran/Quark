@@ -41,6 +41,10 @@ Tray icon with unread mail:
 
 Use the Bridge IMAP password, not your normal Proton account password.
 
+## Known Issues
+
+- The installer may not always close a running Quark tray instance. If installation or update fails because Quark is still running, right-click the Quark tray icon, choose `Exit`, then run the installer again.
+
 ## Build
 
 ```powershell
