@@ -13,6 +13,7 @@ public sealed class TrayApplicationContext : ApplicationContext
     private SettingsForm? _settingsForm;
     private Icon? _currentIcon;
     private int? _lastUnreadCount;
+    private DateTimeOffset? _lastCheckedAt;
     private bool _polling;
 
     public TrayApplicationContext()
@@ -100,7 +101,7 @@ public sealed class TrayApplicationContext : ApplicationContext
             return;
         }
 
-        _settingsForm = new SettingsForm(_settings, _lastUnreadCount);
+        _settingsForm = new SettingsForm(_settings, _lastUnreadCount, _lastCheckedAt);
         _settingsForm.FormClosed += (_, _) =>
         {
             if (_settingsForm?.DialogResult == DialogResult.OK)
@@ -240,8 +241,9 @@ public sealed class TrayApplicationContext : ApplicationContext
             int count = await _client.GetUnreadCountAsync(_settings, timeout.Token);
             bool increased = _lastUnreadCount.HasValue && count > _lastUnreadCount.Value;
             _lastUnreadCount = count;
+            _lastCheckedAt = DateTimeOffset.Now;
             SetIcon(count, false, count == 1 ? "1 unread message" : $"{count} unread messages");
-            _settingsForm?.SetUnreadCount(count);
+            _settingsForm?.SetUnreadState(count, _lastCheckedAt);
 
             if (increased && _settings.ShowBalloonOnIncrease)
             {

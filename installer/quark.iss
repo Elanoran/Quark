@@ -1,5 +1,5 @@
 #define MyAppName "Quark"
-#define MyAppVersion "0.1.2"
+#define MyAppVersion "0.1.3"
 #define MyAppPublisher "Quark contributors"
 #define MyAppExeName "Quark.exe"
 #define MySourceDir "..\src\Quark.App\bin\Release\net8.0-windows\win-x64\publish"
